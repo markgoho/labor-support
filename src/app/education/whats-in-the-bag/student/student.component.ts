@@ -4,11 +4,25 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-student',
   styleUrls: ['./student.component.scss'],
   template: `
-    <app-phrase *ngFor="let item of items" [phrase]="item"></app-phrase>
+    <div class="phrases-container">
+      <app-phrase
+        class="phrase"
+        *ngFor="let item of items; let i = index" 
+        [phrase]="item" 
+        (click)="setPhrase(i)">
+      </app-phrase>
+    </div>
+    <app-full-screen-phrase 
+      (click)="selected = false" 
+      *ngIf="selected" 
+      class="selected-phrase">{{selectedPhrase}}
+    </app-full-screen-phrase>
   `
 })
-export class StudentComponent implements OnInit {
-  items = [
+export class StudentComponent {
+  selected = false;
+  selectedPhrase: string;
+  items: string[] = [
     'Birth Ball, The Rope, Rebozo, Gardener knee pad, Yoga mat, etc.',
     'Socks',
     'Focal Point / Picture / LED candle / Something for the baby',
@@ -24,7 +38,8 @@ export class StudentComponent implements OnInit {
     'Cloth, mouthwash',
     'Comfy shoes / slippers'
   ];
-  constructor() {}
-
-  ngOnInit() {}
+  setPhrase(index: number) {
+    this.selected = true;
+    this.selectedPhrase = this.items[index];
+  }
 }

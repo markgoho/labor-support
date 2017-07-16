@@ -3,13 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-phrase',
   styleUrls: ['./phrase.component.scss'],
-  template: `
-    <div>{{phrase}}</div>
-  `
+  template: `{{phrase}}`
 })
-export class PhraseComponent implements OnInit {
+export class PhraseComponent {
   @Input() phrase: string;
-  constructor() {}
-
-  ngOnInit() {}
 }

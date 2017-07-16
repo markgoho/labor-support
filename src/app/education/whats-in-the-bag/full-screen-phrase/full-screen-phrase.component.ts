@@ -4,12 +4,9 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-full-screen-phrase',
   styleUrls: ['./full-screen-phrase.component.scss'],
   template: `
-    <div>{{phrase}}</div>
+    <div class="full-screen">
+      <ng-content></ng-content>
+    </div>
   `
 })
-export class FullScreenPhraseComponent implements OnInit {
-  @Input() phrase: string;
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class FullScreenPhraseComponent {}
